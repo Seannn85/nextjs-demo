@@ -35,8 +35,8 @@ export async function getStaticPaths() {
 
   client.close();
   return {
-    fallback: false,
-
+    fallback: 'blocking',
+// by making fallback blocking u telling nextjs, the list of path which we are specifing here might not be exhaustive
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
